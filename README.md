@@ -31,17 +31,13 @@
 
 ## Установка
 ```
-> composer require elforastero/transliterate
+> composer require dnsoftware/transliterate
 ```
-
-> ⚠️ Для Laravel v5 используйте ветку v2: `composer require elforastero/transliterate "^2.0"`
-
-Laravel начиная с версии *5.5* не нуждается в дополнительной конфигурации благодаря механизму Package Discovery.
 
 Если вы не используте Package Discovery, необходимо зарегистрировать `Service Provider`, добавив его в массив `providers`, конфигурационного файла `app.php`.
 
 ```php
-ElForastero\Transliterate\ServiceProvider::class,
+Dnsoftware\Transliterate\ServiceProvider::class,
 ```
 
 Если вы хотите использовать алиас, добавьте его в массив `facades` в `app.php`.
@@ -49,7 +45,7 @@ ElForastero\Transliterate\ServiceProvider::class,
 Рекомендую в качестве алиаса использовать `Transliterate`, чтобы избежать конфликтов с Transliterator классом из расширения Intl.
 
 ```php
-'Transliterate' => ElForastero\Transliterate\Facade::class,
+'Transliterate' => Dnsoftware\Transliterate\Facade::class,
 ```
 
 ## Конфигурация
@@ -57,7 +53,7 @@ ElForastero\Transliterate\ServiceProvider::class,
 Для копирования конфига `transliterate.php` в директорию `configs` выполните
 
 ```
-> php artisan vendor:publish --provider="ElForastero\Transliterate\ServiceProvider"
+> php artisan vendor:publish --provider="Dnsoftware\Transliterate\ServiceProvider"
 ```
 
 ## Использование
@@ -74,7 +70,7 @@ Transliterate::make('Двадцать тысяч льё под водой');
 Альтернативная карта транслитерации может быть передана вторым параметром.
 
 ```php
-use ElForastero\Transliterate\Transliterator;
+use Dnsoftware\Transliterate\Transliterator;
 
 $transliterator = new Transliterator(Map::LANG_RU, Map::GOST_7_79_2000);
 $transliterator->make('Двадцать тысяч льё под водой');
@@ -128,14 +124,14 @@ $transliterator->make('Ваша транслітерація');
 Например, можно автоматечески убирать конечные пробелы.
 
 ```php
-ElForastero\Transliterate\Transformer::register(\Closure::fromCallable('trim')),
+Dnsoftware\Transliterate\Transformer::register(\Closure::fromCallable('trim')),
 ```
 
 Или дополнительно приводить строки к нижнему регистру.
 
 ```php
-ElForastero\Transliterate\Transformer::register(\Closure::fromCallable('trim')),
-ElForastero\Transliterate\Transformer::register(\Closure::fromCallable('strtolower')),
+Dnsoftware\Transliterate\Transformer::register(\Closure::fromCallable('trim')),
+Dnsoftware\Transliterate\Transformer::register(\Closure::fromCallable('strtolower')),
 ```
 
 > Будьте внимательны, поскольку трансформеры применяются при каждом вызове `Transliterator::make`.
