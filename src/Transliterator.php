@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ElForastero\Transliterate;
+namespace Dnsoftware\Transliterate;
 
 use Transliterator as IntlTransliterator;
 
