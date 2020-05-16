@@ -1,6 +1,6 @@
 <?php
 
-use ElForastero\Transliterate\Map;
+use Dnsoftware\Transliterate\Map;
 
 /* @noinspection PhpVoidFunctionResultUsedInspection */
 return [
