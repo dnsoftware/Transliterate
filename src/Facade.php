@@ -1,6 +1,6 @@
 <?php
 
-namespace ElForastero\Transliterate;
+namespace Dnsoftware\Transliterate;
 
 use Illuminate\Support\Facades\Facade as BaseFacade;
 
